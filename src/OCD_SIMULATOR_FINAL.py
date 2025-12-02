@@ -139,17 +139,20 @@ APA_ALGORITHM = {
     }
 }
 
-"""
-NOT CHECKED YET
+
 APA_ALGORITHM = {
-    # Source: APA Guidelines 2007, Figure 1
+    # Source: https://www.aafp.org/pubs/afp/issues/2015/1115/p896.html
+    # Quote: "A trial of SSRI therapy should continue for 8 to 12 weeks, with at least 4 to 6 weeks at the maximal tolerable dosage."
     "first_line": {
         "options": ["SSRI", "CBT", "SSRI_plus_CBT"],
         "duration_weeks": "8-12 total (4-6 at maximal dose)",
         "note": "All three are equally valid first-line per APA"
     },
     
-    # Source: APA Guidelines 2007, "Strategies for Little or No Response"
+
+    # Source: https://www.aafp.org/pubs/afp/issues/2015/1115/p896.html
+    # Quote1: "If there is no response to trials of at least two SSRIs, the patient should be referred to a psychiatrist. Clomipramine is an option in these patients."
+    # Quote2: "Addition of an atypical antipsychotic is effective for some patients with inadequate response to SSRI therapy."
     "second_line": {
         "if_poor_response": [
             "switch_different_SSRI",  # First choice
@@ -162,7 +165,7 @@ APA_ALGORITHM = {
         ]
     },
     
-    # Source: APA Guidelines 2007, "Strategies for Continued Inadequate Response"
+    # Source: https://www.aafp.org/pubs/afp/issues/2015/1115/p896.html
     "third_line": [
         "switch_different_augmenting_antipsychotic",
         "switch_different_SRI",
@@ -170,21 +173,14 @@ APA_ALGORITHM = {
         "augment_glutamate_modulator"
     ],
     
-    # Source: FDA guidance + Pallanti 2002 + Clinical trial convention
+    # Source: https://pubmed.ncbi.nlm.nih.gov/26833615/
     "response_thresholds": {
         "adequate": 0.35,      # ≥35% YBOCS reduction (Pallanti 2002, FDA standard)
         "moderate": 0.25,      # 25-35% reduction (Clinical trial convention)
         "remission_ybocs": 12  # YBOCS ≤12 (Consensus definition)
-    },
-    
-    # Alternative thresholds used in some studies
-    "alternative_thresholds": {
-        "remission_strict": 10,   # Some studies use ≤10
-        "remission_loose": 16,    # Some studies use ≤16
-        "minimal_improvement": 0.10  # 10% sometimes used as floor
     }
 }
-"""
+
 
 # ============================================================
 # HELPER FUNCTIONS
@@ -471,11 +467,11 @@ def compare_approaches(df_standard, df_pomdp):
     print("\n" + "=" * 70)
     print(f"POMDP wins on {wins}/5 metrics")
     if wins >= 4:
-        print("✅ STRONG EVIDENCE of clinical value")
+        print("STRONG EVIDENCE of clinical value")
     elif wins >= 3:
-        print("⚠️  MODERATE EVIDENCE of clinical value")
+        print("MODERATE EVIDENCE of clinical value")
     else:
-        print("❌ WEAK EVIDENCE of clinical value")
+        print("WEAK EVIDENCE of clinical value")
     print("=" * 70)
 
 # ============================================================
