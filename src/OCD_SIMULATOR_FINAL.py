@@ -126,21 +126,12 @@ CLINICIAN = {
 # quote-- remission rates for YBOCS < = 12:
 
 APA_ALGORITHM = {
-    "first_line": ["SSRI", "ERP_and_SRI"],
+    "first_line": {
+        "options": ["SSRI", "CBT", "SSRI_plus_CBT"],
+        "duration_weeks": "8-12 total (4-6 at maximal dose)"
+    },
     
-    "second_line": ["switch_different_SSRI"],
-    
-    "third_line": ["switch_different_SSRI"],
-    
-    "response_thresholds": {
-        "clinically_meaningful": 0.35,      # ≥35% YBOCS reduction
-        "moderate": 0.25,      # 25-35% reduction
-        "remission_ybocs": 12  # YBOCS ≤12
-    }
-}
 
-
-APA_ALGORITHM = {
     # Source: https://www.aafp.org/pubs/afp/issues/2015/1115/p896.html
     # Quote: "A trial of SSRI therapy should continue for 8 to 12 weeks, with at least 4 to 6 weeks at the maximal tolerable dosage."
     "first_line": {
@@ -175,9 +166,9 @@ APA_ALGORITHM = {
     
     # Source: https://pubmed.ncbi.nlm.nih.gov/26833615/
     "response_thresholds": {
-        "adequate": 0.35,      # ≥35% YBOCS reduction (Pallanti 2002, FDA standard)
-        "moderate": 0.25,      # 25-35% reduction (Clinical trial convention)
-        "remission_ybocs": 12  # YBOCS ≤12 (Consensus definition)
+        "clinically_meaningful": 0.35,  # Standardized key for adequate response
+        "moderate": 0.25,              # 25-35% reduction
+        "remission_ybocs": 12          # YBOCS ≤12
     }
 }
 
